@@ -55,7 +55,7 @@ class EventResponse(BaseModel):
     date_added: str
 
 
-@app.put("/events", response_model=GiveEventDataResp)
+@app.put("/events", response_model=EventResponse)
 def put_events(request: EventRequest):
     rq = request.dict()
     id = len(app.events_list)
