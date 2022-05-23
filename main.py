@@ -43,12 +43,12 @@ def get_day(name: str = "", number: int = 0):
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
 
 
-class GiveEventDataRq(BaseModel):
+class EventRequest(BaseModel):
     date: str
     event: str
 
 
-class GiveEventDataResp(BaseModel):
+class EventResponse(BaseModel):
     id: int
     date: str
     name: str
@@ -56,7 +56,7 @@ class GiveEventDataResp(BaseModel):
 
 
 @app.put("/events", response_model=GiveEventDataResp)
-def put_events(request: GiveEventDataRq):
+def put_events(request: EventRequest):
     rq = request.dict()
     id = len(app.events_list)
     date = rq.get("date", None)
@@ -67,7 +67,7 @@ def put_events(request: GiveEventDataRq):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
     event = rq.get("event", None)
     date_added = datetime.date.today()
-    response = GiveEventDataResp(id=id, date=date, name=event, date_added=str(date_added))
+    response = EventResponse(id=id, date=date, name=event, date_added=str(date_added))
     app.events_list.append(response)
     return response
 
