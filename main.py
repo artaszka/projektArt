@@ -30,11 +30,11 @@ def zadanie1_2():
     return {"method": "DELETE"}
 
 
-week = {1:'monday', 2:'tuesday', 3:'wednesday', 4:'thursday', 5:'friday', 6:'saturday', 7:'sunday'}
+week = {'monday':1, 'tuesday':2, 'wednesday':3, 'thursday':4, 'friday':5, 'saturday':6, 'sunday'}
 
 
-@app.get("/day/")
-def zadanie1_3(num: int, day: str, response:Response):
+@app.get("/day")
+def zadanie1_3(day: str, num: int, response:Response):
 
     if num == week[day]:
         response.status_code = status.HTTP_200_OK
