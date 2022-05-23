@@ -1,6 +1,7 @@
 from fastapi import FastAPI, status, HTTPException, Request
 
 import datetime
+from pydantic import BaseModel
 
 
 class GiveEventDataRq(BaseModel):
