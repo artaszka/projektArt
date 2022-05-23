@@ -4,6 +4,9 @@ app = FastAPI()
 
 
 @app.get("/")
-def root():
-    # return {"message": "Hello World, matrix has you"}
+def zadanie1():
     return {"start": "1970-01-01"}
+
+@app.get("/method", status_code=201)
+def zadanie2():
+    return {"start": "1970-01-99"}
