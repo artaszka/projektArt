@@ -7,6 +7,6 @@ app = FastAPI()
 def zadanie1():
     return {"start": "1970-01-01"}
 
-@app.get("/method", status_code=201)
+@app.get("/method")
 def zadanie2():
-    return {"start": "1970-01-99"}
+    return {"method": "GET"}
