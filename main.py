@@ -4,20 +4,9 @@ import datetime
 from pydantic import BaseModel
 
 
-class GiveEventDataRq(BaseModel):
-    date: str
-    event: str
-
-
-class GiveEventDataResp(BaseModel):
-    id: int
-    date: str
-    name: str
-    date_added: str
-
 
 app = FastAPI()
-
+app.events_list = []
 
 @app.get("/")
 def zadanie1_1():
@@ -52,6 +41,18 @@ def get_day(name: str = "", number: int = 0):
     if name in days and days[name] == number:
         return status.HTTP_200_OK
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
+
+
+class GiveEventDataRq(BaseModel):
+    date: str
+    event: str
+
+
+class GiveEventDataResp(BaseModel):
+    id: int
+    date: str
+    name: str
+    date_added: str
 
 
 @app.put("/events", response_model=GiveEventDataResp)
