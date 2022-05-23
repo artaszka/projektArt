@@ -36,10 +36,9 @@ week = {1:'monday', 2:'tuesday', 3:'wednesday', 4:'thursday', 5:'friday', 6:'sat
 @app.get("/day/")
 def zadanie1_3(num: int, day: str, response:Response):
 
-    if (num==day[week]):
-        response.status_code=status.HTTP_200_OK
+    if num == day[week]:
+        response.status_code = status.HTTP_200_OK
     else:
-        response.status_code=status.HTTP_400_BAD_REQUEST
+        response.status_code = status.HTTP_400_BAD_REQUEST
 
-
-    return {"method": "GET"}
+    return response.status_code
