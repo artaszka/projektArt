@@ -1,4 +1,4 @@
-from fastapi import FastAPI, status, Response
+from fastapi import FastAPI, status, HTTPException, Request
 
 import datetime
 
@@ -30,15 +30,11 @@ def zadanie1_2():
     return {"method": "DELETE"}
 
 
-week = {'monday':1, 'tuesday':2, 'wednesday':3, 'thursday':4, 'friday':5, 'saturday':6, 'sunday':7}
+days = {"monday": 1, "tuesday": 2, "wednesday": 3, "thursday": 4, "friday": 5, "saturday": 6, "sunday": 7}
 
 
 @app.get("/day")
-def zadanie1_3(day: str, num: int, response:Response):
-
-    if num == week[day]:
-        response.status_code = status.HTTP_200_OK
-    else:
-        response.status_code = status.HTTP_400_BAD_REQUEST
-
-    return response.status_code
+def get_day(name: str = "", number: int = 0):
+    if name in days and days[name] == number:
+        return status.HTTP_200_OK
+    raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
