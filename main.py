@@ -11,8 +11,8 @@ from time import strptime
 app = FastAPI()
 
 class HerokuApp:
-    app_url = "http://0.0.0.0:5000"
-    # app_url = "https://arturp.herokuapp.com/"  # Fill your heroku app url here
+#     app_url = "http://0.0.0.0:5000"
+    app_url = "https://arturp.herokuapp.com/"  # Fill your heroku app url here
 
 
 @app.get("/start", response_class=HTMLResponse)
