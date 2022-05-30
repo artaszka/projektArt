@@ -1,14 +1,32 @@
-from fastapi import FastAPI, status, HTTPException, Request, Query
-from typing import List
+# Do not put any other code or imports here
+from fastapi import FastAPI, Response, status, Request
+from fastapi.responses import HTMLResponse
 
-import datetime
-from pydantic import BaseModel
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
+
+from datetime import datetime, timedelta
+from time import strptime
 
 app = FastAPI()
-app.events_list = []
 
-@app.get("/start")
+class HerokuApp:
+    app_url = "http://0.0.0.0:5000"
+    # app_url = "https://arturp.herokuapp.com/"  # Fill your heroku app url here
+
+
+@app.get("/start", response_class=HTMLResponse)
 def zadanie3_1():
+    return """
+        <html>
+            <head>
+                <title>HTML Title</title>
+            </head>
+            <body>
+                <h1>The unix epoch started at 1970-01-01</h1>
+            </body>
+        </html>
+    """
 
 
 
