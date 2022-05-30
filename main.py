@@ -4,11 +4,14 @@ from typing import List
 import datetime
 from pydantic import BaseModel
 
+app = FastAPI()
+app.events_list = []
+
+@app.get("/start")
+def zadanie3_1():
 
 
 
-# app = FastAPI()
-# app.events_list = []
 #
 # @app.get("/")
 # def zadanie1_1():
